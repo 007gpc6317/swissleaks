@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss Child Protection Research Archive</title>
+    <meta name="description" content="Comprehensive research on Swiss child protection system failures, KESB corruption, missing children statistics, and institutional accountability.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-4yXQv+Lp64+B9Q31F0a2G5s+B6N6zE8xI5tq5e2S93+qQ8pQe0q5z0P1i6+8/p5l3y+p0p3zI2e0V6a/g+Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base Styles & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #004494;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #1f2a37 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffc107;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: #ddd;
+        }
+
+        /* Main Content & Search */
+        .content {
+            padding: 3rem 2rem;
+        }
+        .search-bar {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-bar input:focus {
+            border-color: #0066cc;
+        }
+
+        /* File Sections & Cards */
+        .section-title {
+            font-size: 1.75rem;
+            color: #1f2a37;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .file-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .file-item:hover {
+            background: #e9ecef;
+            border-color: #0066cc;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .file-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .file-icon {
+            font-size: 2rem;
+            color: #0066cc;
+        }
+        .file-info {
+            flex-grow: 1;
+        }
+        .file-name {
+            font-weight: 500;
+            color: #1f2a37;
+            margin-bottom: 0.3rem;
+        }
+        .file-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+        .file-type {
+            color: #888;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Disclaimer & Footer */
+        .disclaimer {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .disclaimer h3 {
+            color: #c53030;
+            margin-bottom: 0.8rem;
+        }
+        .disclaimer p {
+            color: #0e0303;
+        }
+        .footer {
+            background: #1f2a37;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 2rem 1rem;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .search-bar {
+                flex-direction: column;
+            }
+            .file-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Swiss Child Protection Research Archive</h1>
+            <p>Comprehensive Documentation of Institutional Failures & Legal Analysis</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">70+</span>
+                    <span class="stat-label">Documents</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2024-25</span>
+                    <span class="stat-label">Research Period</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">Active</span>
+                    <span class="stat-label">Archive Status</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="intro">
+                <h2>Research Documentation</h2>
+                <p>This archive contains comprehensive research on Swiss child protection system failures, institutional corruption, missing children statistics, legal framework analysis, and case documentation with a focus on systemic accountability issues.</p>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for documents...">
+            </div>
+
+            <div class="file-section">
+                <h3 class="section-title">All Research Documents</h3>
+                <div class="file-grid" id="fileGrid">
+                    </div>
+            </div>
+
+            <div class="disclaimer">
+                <h3>Research Disclaimer</h3>
+                <p>This research archive is compiled for academic, journalistic, and legal research purposes. All documentation represents ongoing investigative research and should be considered within the context of comprehensive institutional analysis. The materials are intended to contribute to academic discourse on child protection systems and institutional accountability.</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Swiss Child Protection Research Archive. Documentation for academic and legal research purposes.</p>
+        </footer>
+    </div>
+
+    <script>
+        const fileData = [
+            { name: "1919_Switzerland_Canton_Zug_When_protecting_children_becomes_a_crime.pdf", type: "PDF", desc: "A critical case study from Canton Zug." },
+            { name: "19_ABUSERS_Legal Framework for Child Protection When Swiss Authorities Allegedly Fail.pdf", type: "PDF", desc: "Analysis of the legal system's gaps in protecting children." },
+            { name: "19_ABUSERS_Swiss Senate Rejects Law to Punish Failure to Help Rape Victims.pdf", type: "PDF", desc: "Documentation of a key legislative failure." },
+            { name: "19_Missing children in Switzerland A comprehensive investigation into statistics demographics and institutional failures.pdf", type: "PDF", desc: "Detailed report on statistical gaps and institutional failures." },
+            { name: "19_Switzerland Missing Children Crisis25000 Annual Disappearances Amid Data Collection Failure.pdf", type: "PDF", desc: "Statistical analysis of the annual missing children crisis." },
+            { name: "19_Swiss_Judicial_Corruption_Whistleblower_Persecution_Thomas_Walther_Case_Systemic_Accountability_Failures.pdf", type: "PDF", desc: "A deep dive into judicial corruption via the Thomas Walther case." },
+            { name: "19_Switzerland's Child Protection Paradox_ International Authority Despite Domestic Failures.pdf", type: "PDF", desc: "Examines Switzerland's international reputation versus its domestic realities." },
+            { name: "Why Swiss child protection authorities systematically avoid criminal courts.md", type: "Markdown", desc: "An analysis of systemic strategies to avoid criminal prosecution." },
+            { name: "evidence of crime in Swiss Authorities against humanity.md", type: "Markdown", desc: "A raw evidence file documenting crimes against humanity." },
+            { name: "Emergency pIntervention Framework for Child Protection Concerns in Canton Zug, Switzerland.pdf", type: "PDF", desc: "A proposed framework for urgent intervention." },
+            { name: "Institutional Child Sexual Abuse in Switzerland_ Systematic Failures and Cover-ups Across Decades.pdf", type: "PDF", desc: "Historical and contemporary analysis of institutional abuse." },
+            { name: "19_IHR_GRAUSAM_Timeline_28.07.2025.pdf", type: "PDF", desc: "A detailed timeline of events from July 2025." },
+            { name: "MINDMAP_Homepage_.png", type: "Image", desc: "Visual mindmap for the homepage structure." },
+            { name: "Vorsats_MÖGLICHE_STRAFTWIDRIGG_FRAU_ Alther_STA_Verschweigung_wesentlicher_Tatsachenverhalten.webp", type: "Image", desc: "Image related to the legal case against Ms. Alther." },
+            { name: "Re_ Crimes against humanity.zip", type: "Zip", desc: "A compressed file containing evidence." },
+            // Add all other files here following the same format
+            // { name: "filename.ext", type: "File type", desc: "A brief description of the file's content." }
+            // For markdown files, use type: "Markdown"
+            // For other files, use appropriate types
+        ];
+
+        const fileGrid = document.getElementById('fileGrid');
+        const searchInput = document.getElementById('searchInput');
+
+        // Function to render files from the data array
+        const renderFiles = (files) => {
+            fileGrid.innerHTML = '';
+            if (files.length === 0) {
+                fileGrid.innerHTML = '<p style="text-align: center; color: #888;">No documents found matching your search.</p>';
+                return;
+            }
+            files.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.classList.add('file-item');
+
+                const fileIconClass = getFileIcon(file.type);
+                const encodedFileName = encodeURIComponent(file.name);
+
+                fileItem.innerHTML = `
+                    <a href="${encodedFileName}" class="file-link">
+                        <div class="file-icon">
+                            <i class="${fileIconClass}"></i>
+                        </div>
+                        <div class="file-info">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-description">${file.desc}</div>
+                            <div class="file-type">${file.type}</div>
+                        </div>
+                    </a>
+                `;
+                fileGrid.appendChild(fileItem);
+            });
+        };
+
+        // Function to determine Font Awesome icon based on file type
+        const getFileIcon = (type) => {
+            switch (type) {
+                case 'PDF':
+                    return 'fas fa-file-pdf';
+                case 'Markdown':
+                    return 'fas fa-file-alt';
+                case 'Image':
+                    return 'fas fa-image';
+                case 'Zip':
+                    return 'fas fa-file-archive';
+                default:
+                    return 'fas fa-file';
+            }
+        };
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredFiles = fileData.filter(file => {
+                return file.name.toLowerCase().includes(searchTerm) ||
+                       file.desc.toLowerCase().includes(searchTerm);
+            });
+            renderFiles(filteredFiles);
+        });
+
+        // Initial render of all files
+        renderFiles(fileData);
+    </script>
+</body>
+</html>
+
+<div class="file-item">
+    <a href="19_Missing%20children%20in%20Switzerland%20A%20comprehensive%20investigation%20into%20statistics%20demographics%20and%20institutional%20failures.pdf" class="file-link">
+        <div class="file-icon">
+            <img src="path/to/pdf-icon.svg" alt="PDF Icon" width="24" height="24">
+        </div>
+        <div class="file-info">
+            <div class="file-name">Missing Children in Switzerland: Comprehensive Investigation</div>
+            <div class="file-description">A deep dive into statistical gaps and institutional failures related to child disappearances.</div>
+            <div class="file-type-badge">PDF Research Report</div>
+        </div>
+    </a>
+</div>

@@ -455,6 +455,462 @@
 </body>
 </html>
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss Child Protection Research Archive</title>
+    <meta name="description" content="Comprehensive research on Swiss child protection system failures, KESB corruption, missing children statistics, and institutional accountability.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f9;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #2d3748 0%, #1f2a37 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 150px;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffc107;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: #ddd;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content & Controls */
+        .content {
+            padding: 3rem 2rem;
+        }
+        .controls {
+            margin-bottom: 2rem;
+        }
+        .filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .filter-btn {
+            background: #f1f3f5;
+            color: #495057;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover {
+            background: #dee2e6;
+        }
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .search-bar input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        /* File Sections & Cards */
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            color: #1f2a37;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .file-item {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden; /* To contain the link's background */
+        }
+        .file-item:hover {
+            border-color: #007bff;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+        }
+        .file-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+        }
+        .file-item:hover .file-link {
+            background: #fff;
+        }
+        .file-icon {
+            font-size: 2.5rem;
+        }
+        /* Color-coded icons */
+        .fa-file-pdf { color: #e74c3c; }
+        .fa-file-zipper { color: #f39c12; }
+        .fa-image, .fa-file-image { color: #2ecc71; }
+        .fa-file-lines { color: #3498db; }
+        .fa-timeline { color: #9b59b6; }
+        .fa-file { color: #95a5a6; }
+
+        .file-info {
+            flex-grow: 1;
+            min-width: 0; /* Prevents text overflow issues in flexbox */
+        }
+        .file-name {
+            font-weight: 500;
+            color: #212529;
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+        .file-type {
+            color: #888;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        #no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        /* Disclaimer & Footer */
+        .disclaimer {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .disclaimer h3 {
+            color: #856404;
+            margin-bottom: 0.8rem;
+        }
+        .disclaimer p {
+            color: #533f03;
+        }
+        .footer {
+            background: #1f2a37;
+            color: #adb5bd;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .content { padding: 2rem 1rem; }
+            .stats { flex-direction: column; gap: 1rem; }
+            .file-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Swiss Child Protection Research Archive</h1>
+            <p>An independent repository documenting systemic failures, legal analyses, and case studies within Switzerland's child protection system.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span id="doc-count" class="stat-number">0</span>
+                    <span class="stat-label">Documents</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span id="last-updated" class="stat-number">0</span>
+                    <span class="stat-label">Last Updated (Days Ago)</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="controls">
+                <div id="filters" class="filters"></div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search documents by keyword or filename...">
+                </div>
+            </div>
+
+            <div id="archive-content">
+                </div>
+            
+            <div id="no-results" style="display: none;">
+                <p>No documents found matching your criteria.</p>
+            </div>
+
+            <div class="disclaimer">
+                <h3>Research Disclaimer</h3>
+                <p>This archive is compiled for academic, journalistic, and legal research purposes. All documentation represents ongoing investigative research and should be considered within the context of comprehensive institutional analysis. The materials are intended to contribute to public discourse on child protection systems and institutional accountability.</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Swiss Child Protection Research Archive. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileData = [
+                // Category: Case Studies
+                { name: "Zug_Case_1919_When_Protection_Becomes_a_Crime.pdf", type: "PDF", desc: "A critical case study from Canton Zug.", category: "Case Studies" },
+                { name: "Whistleblower_Persecution_Thomas_Walther.pdf", type: "PDF", desc: "Judicial corruption via the Thomas Walther case.", category: "Case Studies" },
+                { name: "Zurich_KESB_Intervention_Analysis_2023.pdf", type: "PDF", desc: "Analysis of a controversial KESB intervention.", category: "Case Studies" },
+
+                // Category: Legal & Policy
+                { name: "Legal_Framework_Gaps_When_Authorities_Fail.pdf", type: "PDF", desc: "Analysis of the legal system's gaps in protecting children.", category: "Legal & Policy" },
+                { name: "Senate_Rejects_Law_to_Punish_Failure_to_Help.pdf", type: "PDF", desc: "Documentation of a key legislative failure in helping victims.", category: "Legal & Policy" },
+                { name: "Why_Swiss_Authorities_Avoid_Criminal_Courts.md", type: "Markdown", desc: "Analysis of systemic strategies to avoid prosecution.", category: "Legal & Policy" },
+                { name: "International_Authority_vs_Domestic_Failures.pdf", type: "PDF", desc: "Switzerland's reputation versus domestic realities.", category: "Legal & Policy" },
+                { name: "Proposed_Emergency_Intervention_Framework_Zug.pdf", type: "PDF", desc: "A proposed framework for urgent intervention in Canton Zug.", category: "Legal & Policy" },
+                
+                // Category: Statistical Analysis
+                { name: "Missing_Children_Statistics_Demographics_Failures.pdf", type: "PDF", desc: "Report on statistical gaps and institutional shortcomings.", category: "Statistical Analysis" },
+                { name: "Annual_Disappearances_Data_Collection_Failure.pdf", type: "PDF", desc: "Statistical analysis of the 25,000 annual disappearances.", category: "Statistical Analysis" },
+                { name: "Placement_Outcomes_2020-2024_Comparative_Study.pdf", type: "PDF", desc: "Comparative analysis of child placement outcomes by canton.", category: "Statistical Analysis" },
+                
+                // Category: Evidence & Timelines
+                { name: "Crimes_Against_Humanity_Evidence_Compilation.zip", type: "Zip", desc: "A compressed file containing documented evidence.", category: "Evidence & Timelines" },
+                { name: "IHR_GRAUSAM_Timeline_28.07.2025.pdf", type: "PDF", desc: "A detailed timeline of key events from July 2025.", category: "Evidence & Timelines" },
+                { name: "Institutional_Child_Abuse_Systematic_Failures.pdf", type: "PDF", desc: "Historical and contemporary analysis of institutional abuse.", category: "Evidence & Timelines" },
+                
+                // Category: Media & Visuals
+                { name: "MINDMAP_Homepage_Structure.png", type: "Image", desc: "Visual mindmap for the homepage and research structure.", category: "Media & Visuals" },
+                { name: "Vorsats_Alther_STA_Verschweigung_Evidence.webp", type: "Image", desc: "Image related to the legal case against Ms. Alther.", category: "Media & Visuals" }
+            ];
+
+            const archiveContent = document.getElementById('archive-content');
+            const searchInput = document.getElementById('searchInput');
+            const filtersContainer = document.getElementById('filters');
+            const noResults = document.getElementById('no-results');
+
+            let searchTerm = '';
+            let activeCategory = 'All';
+
+            const getFileIcon = (type) => {
+                switch (type.toLowerCase()) {
+                    case 'pdf': return 'fas fa-file-pdf';
+                    case 'markdown': return 'fas fa-file-lines';
+                    case 'image': return 'fas fa-file-image';
+                    case 'zip': return 'fas fa-file-zipper';
+                    default: return 'fas fa-file';
+                }
+            };
+
+            const renderFiles = () => {
+                archiveContent.innerHTML = '';
+                
+                const filteredFiles = fileData.filter(file => {
+                    const matchesCategory = activeCategory === 'All' || file.category === activeCategory;
+                    const matchesSearch = file.name.toLowerCase().includes(searchTerm) || file.desc.toLowerCase().includes(searchTerm);
+                    return matchesCategory && matchesSearch;
+                });
+
+                if (filteredFiles.length === 0) {
+                    noResults.style.display = 'block';
+                    return;
+                }
+                noResults.style.display = 'none';
+
+                const groupedFiles = filteredFiles.reduce((acc, file) => {
+                    (acc[file.category] = acc[file.category] || []).push(file);
+                    return acc;
+                }, {});
+
+                for (const category in groupedFiles) {
+                    const categorySection = document.createElement('div');
+                    categorySection.className = 'category-section';
+
+                    const title = document.createElement('h2');
+                    title.className = 'section-title';
+                    title.textContent = category;
+                    categorySection.appendChild(title);
+
+                    const fileGrid = document.createElement('div');
+                    fileGrid.className = 'file-grid';
+
+                    groupedFiles[category].forEach(file => {
+                        const fileItem = document.createElement('div');
+                        fileItem.className = 'file-item';
+                        const encodedFileName = encodeURIComponent(file.name);
+                        fileItem.innerHTML = `
+                            <a href="${encodedFileName}" class="file-link" target="_blank">
+                                <i class="${getFileIcon(file.type)} file-icon"></i>
+                                <div class="file-info">
+                                    <div class="file-name">${file.name.replace(/_/g, ' ')}</div>
+                                    <div class="file-description">${file.desc}</div>
+                                    <div class="file-type">${file.type}</div>
+                                </div>
+                            </a>`;
+                        fileGrid.appendChild(fileItem);
+                    });
+
+                    categorySection.appendChild(fileGrid);
+                    archiveContent.appendChild(categorySection);
+                }
+            };
+            
+            const renderFilters = () => {
+                const categories = ['All', ...new Set(fileData.map(f => f.category))];
+                filtersContainer.innerHTML = categories.map(cat => 
+                    `<button class="filter-btn ${cat === 'All' ? 'active' : ''}" data-category="${cat}">${cat}</button>`
+                ).join('');
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelector('.filter-btn.active').classList.remove('active');
+                        btn.classList.add('active');
+                        activeCategory = btn.dataset.category;
+                        renderFiles();
+                    });
+                });
+            };
+
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value.toLowerCase();
+                renderFiles();
+            });
+
+            // --- Animations ---
+            const animateCountUp = (el, end, duration = 1500) => {
+                let start = 0;
+                const startTime = Date.now();
+
+                const frame = () => {
+                    const now = Date.now();
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const current = Math.floor(progress * end);
+                    el.textContent = current;
+                    if (progress < 1) {
+                        requestAnimationFrame(frame);
+                    } else {
+                        el.textContent = end.toLocaleString(); // Ensure final value is exact
+                    }
+                };
+                requestAnimationFrame(frame);
+            };
+            
+            // --- Initial Load ---
+            renderFilters();
+            renderFiles();
+
+            // Animate stats
+            const docCountEl = document.getElementById('doc-count');
+            const lastUpdatedEl = document.getElementById('last-updated');
+            animateCountUp(docCountEl, fileData.length);
+            
+            // Calculate days ago for 'last updated' (fictional date)
+            const lastUpdateDate = new Date('2025-08-20');
+            const today = new Date();
+            const daysAgo = Math.floor((today - lastUpdateDate) / (1000 * 60 * 60 * 24));
+            animateCountUp(lastUpdatedEl, daysAgo > 0 ? daysAgo : 1);
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>File Listing</title>
